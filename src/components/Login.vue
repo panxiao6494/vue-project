@@ -24,6 +24,8 @@
   </div>
 </template>
 <script>
+  import { login } from '../api/api'
+
   export default {
     data () {
       return {
@@ -54,7 +56,7 @@
       login () {
         this.$refs.loginFormRef.validate(async valid => {
           if (!valid) return
-          const { data: res } = await this.$http.post('login', this.loginForm)// 将data解构出来
+          const { data: res } = await login(this.loginForm)// 将data解构出来
           console.log(res)// 对象
           if (res.meta.status !== 200) return this.$message.error('用户名不存在')
           this.$message.success('登录成功！')
