@@ -1,14 +1,19 @@
 <template xmlns="b">
   <div>
     <el-row>
-      <el-button type="info">退出</el-button>
+      <el-button type="info" @click="logout">退出</el-button>
     </el-row>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'Home'
+    methods: {
+      logout () {
+        window.sessionStorage.removeItem('token')
+        this.$router.push('/login')
+      }
+    }
   }
 </script>
 

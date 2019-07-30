@@ -81,36 +81,37 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    .avatar-box {
-      width: 130px;
-      height: 130px;
-      border: 1px solid #eee;
-      border-radius: 50%;
-      padding: 10px;
-      position: absolute;
-      background-color: #fff;
-      left: 50%;
-      transform: translate(-50%, -50%);
+  .avatar-box {
+    width: 130px;
+    height: 130px;
+    border: 1px solid #eee;
+    border-radius: 50%;
+    padding: 10px;
+    position: absolute;
+    background-color: #fff;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
-      img {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        background-color: #eee;
-      }
-    }
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #eee;
+  }
 
-    .login_form {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      padding: 0 20px;
-      box-sizing: border-box;
-    }
+  }
+  .login_form {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
 
-    .btns {
-      display: flex;
-      justify-content: flex-end;
-    }
+  .btns {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   }
 </style>
