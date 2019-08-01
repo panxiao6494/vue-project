@@ -1,7 +1,10 @@
-var a
-var b = a * 0
-if (b == b) {
-  console.log(b * 2 + '2' - 0 + 4)
-} else {
-  console.log(!b * 2 + '2' - 0 + 4)
-}
+var arr=[
+  {
+    id:1,
+    name:'zs'
+  },
+  {
+    id:2,
+    name:'ls'
+  }
+]

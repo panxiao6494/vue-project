@@ -22,3 +22,49 @@ export function menu (params) {
 export function getUser (parmas) {
   return axios.get('/users', parmas)
 }
+
+// 状态切换开关的改变
+export function changeStae (params) {
+  return axios.put(`users/${params.id}/state/${params.mg_state}`)
+}
+
+//添加用户
+export function addU (params) {
+  return axios.post('/users', params)
+}
+
+//展示编辑表格
+export function showU (params) {
+  return axios.get('users/' + params)
+}
+
+//编辑用户
+export function editU (params) {
+  return axios.put('users/' + params.id, {
+    email: params.email,
+    mobile: params.mobile
+  })
+}
+
+//删除用户
+export function deletU (params) {
+  return axios.delete('users/' + params)
+}
+
+//分配角色
+export function setR (params) {
+  return axios.get('roles')
+}
+
+//保存分配的角色
+export function saveI (params1, params2) {
+  return axios.put(`users/${params1}/role`, {
+    rid: params2
+  })
+}
+
+//获取角色
+export function getR () {
+  return axios.get('roles')
+}
+
