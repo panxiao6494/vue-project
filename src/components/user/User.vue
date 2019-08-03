@@ -6,7 +6,7 @@
       <el-breadcrumb-item>用户列表</el-breadcrumb-item>
     </el-breadcrumb>
     <div class="status">
-      <el-row :gutter="20">
+      <el-row :gutter="20"> <!--栅格之间的间隔为20px-->
         <el-col :span="8">
           <el-input placeholder="请输入内容" v-model="queryInfo.query" clearable @clear="queryUsers">
             <el-button slot="append" icon="el-icon-search" @click="queryUsers"></el-button>
@@ -17,7 +17,7 @@
         </el-col>
       </el-row>
       <el-table :data="userList" border stipe>
-        <el-table-column type="index"></el-table-column>
+        <el-table-column label="管理员id" prop="id"></el-table-column>
         <el-table-column label="姓名" prop="username"></el-table-column>
         <el-table-column label="邮箱" prop="email"></el-table-column>
         <el-table-column label="电话" prop="mobile"></el-table-column>
@@ -28,7 +28,7 @@
             <el-switch v-model="scope.row.mg_state" @change="changeState(scope.row)"></el-switch>
           </template>
         </el-table-column>
-        <el-table-column label="操作">
+        <el-table-column label="操作" width="210px">
           <template slot-scope="scope">
             <el-button type="primary" icon="el-icon-edit" size="mini" @click="showEdit(scope.row.id)"></el-button>
             <el-button type="danger" icon="el-icon-delete" size="mini" @click="deleteUser(scope.row.id)"></el-button>
