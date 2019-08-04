@@ -136,7 +136,6 @@
 
         cb(new Error('请输入合法的邮箱'))
       }
-
       // 验证手机号的规则
       var checkMobile = (rule, value, cb) => {
         // 验证手机号的正则表达式

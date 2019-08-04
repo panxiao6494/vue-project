@@ -26,8 +26,8 @@
                   :key="item1.id"
                   :class="[i2 === 0 ? '' : 'bdtop', 'vcenter']"
                 >
-                  <el-col :span="6">
-                    <el-tag
+                    <el-col :span="6">
+                      <el-tag
                       type="success"
                       closable
                       @close="handleClose(props.row,item1.id)"

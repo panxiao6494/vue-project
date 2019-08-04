@@ -5,7 +5,7 @@
       <el-breadcrumb-item>权限管理</el-breadcrumb-item>
       <el-breadcrumb-item>权限列表</el-breadcrumb-item>
     </el-breadcrumb>
-    <el-table :data="rightlist" border stripe>
+    <el-table :data="rightlist" border stripe width="100%">
       <el-table-column type="index"></el-table-column>
       <el-table-column prop="authName" label="权限名称"></el-table-column>
       <el-table-column prop="path" label="路径"></el-table-column>
@@ -20,31 +20,31 @@
   </div>
 </template>
 <script>
-import { getRi } from '../../api/api'
+  import { getRi } from '../../api/api'
 
-export default {
-  data() {
-    return {
-      rightlist: []
+  export default {
+    data () {
+      return {
+        rightlist: []
+      }
+    },
+    methods: {
+      async getRights () {
+        const { data: res } = await getRi()
+        if (res.meta.status !== 200) return this.$message.error('请求出错')
+        this.$message.success('成功获取权限列表')
+        this.rightlist = res.data
+        console.log(this.rightlist)
+      }
+    },
+    created () {
+      this.getRights()
     }
-  },
-  methods: {
-    async getRights() {
-      const { data: res } = await getRi()
-      if (res.meta.status !== 200) return this.$message.error('请求出错')
-      this.$message.success('成功获取权限列表')
-      this.rightlist = res.data
-      console.log(this.rightlist)
-    }
-  },
-  created() {
-    this.getRights()
   }
-}
 </script>
 <style lang="less">
-.el-table {
-  padding: 10px;
-  margin-top: 15px;
-}
+  .el-table {
+    padding: 10px;
+    margin-top: 15px;
+  }
 </style>
