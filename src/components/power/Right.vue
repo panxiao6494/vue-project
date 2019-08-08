@@ -42,9 +42,13 @@
     }
   }
 </script>
-<style lang="less">
+<style lang="less" scoped>
   .el-table {
     padding: 10px;
     margin-top: 15px;
+
+    th, td {
+      text-align: center;
+    }
   }
 </style>

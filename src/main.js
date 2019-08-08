@@ -7,8 +7,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 import TreeTable from 'vue-table-with-tree-grid'
 import moment from 'moment'
 
-Vue.filter('dateFormat', (val, qq) => {
-  return moment().format(qq)
+Vue.filter('dateFormat', () => {
+  return moment().format('YYYY-MM-DD HH:mm:ss')
 })
 Vue.component('tree-table', TreeTable)
 // 引入全局样式

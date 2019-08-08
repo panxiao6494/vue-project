@@ -109,3 +109,51 @@ export function delG (param) {
   return axios.delete(`goods/${param}`)
 }
 
+//获得列表参数,
+export function getPar (params1, params2) {
+  return axios.get(`categories/${params1}/attributes`, {
+    params: params2
+  })
+}
+
+//删除分类参数
+export function delp (param1, param2) {
+  return axios.delete(`categories/${param1}/attributes/${param2}`)
+}
+
+//删除标签
+export function delT (param1, param2,) {
+  return axios.put(`categories/${param1}/attributes/${param2.attr_id}`, {
+    attr_name: param2.attr_name,
+    attr_sel: param2.attr_sel,
+    attr_vals: param2.attr_vals.join(' ')
+  })
+}
+
+export function getPar2 (params1, params2, params3) {
+  return axios.post(`categories/${params1}/attributes`, {
+    attr_name: params2,
+    attr_sel: params3
+  })
+}
+
+// 编辑分类
+export function editPa (param1, param2, param3) {
+  return axios.put(`categories/${param1}/attributes/${param2.attr_id}`, {
+    attr_name: param2.attr_name,
+    attr_sel: param3
+  })
+}
+
+//提交保存分类数据
+export function getEt (param1, param2) {
+  return axios.put(`categories/${param1}/attributes/${param2.attr_id}`, {
+    attr_name: param2.attr_name,
+    attr_sel: param2.attr_sel,
+    attr_vals: param2.attr_vals.join(' ')
+  })
+}
+
+
+
+

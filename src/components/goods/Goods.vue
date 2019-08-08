@@ -13,7 +13,7 @@
           </el-input>
         </el-col>
         <el-col :span="5">
-          <el-button type="primary">添加商品</el-button>
+          <el-button type="primary" @click="goAdd">添加商品</el-button>
         </el-col>
       </el-row>
       <el-table :data="goodsData" stripe style="width: 100%" border>
@@ -23,7 +23,7 @@
         <el-table-column prop="goods_weight" label="商品重量"></el-table-column>
         <el-table-column prop="add_time" label="创建时间" width="170">
           <template slot-scope="scope">
-            {{scope.row.add_time | dateFormat('YYYY-MM-DD HH:mm:ss')}}
+            {{scope.row.add_time | dateFormat()}}
           </template>
         </el-table-column>
         <el-table-column label="操作" width="140">
@@ -98,7 +98,11 @@
         if (res.meta.status !== 200) return this.$message.error('请求删除出错')
         this.$message.success('删除成功')
         this.getGood()
+      },
+      goAdd () {
+        this.$router.push('/goods/add')
       }
+
     },
     created () {
       this.getGood()

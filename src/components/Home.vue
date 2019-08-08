@@ -26,10 +26,10 @@
               <span>{{item.authName}}</span>
             </template>
             <el-menu-item
-              :index="item2.path"
+              :index="'/'+item2.path"
               v-for="item2 in item.children"
               :key="item2.id"
-              @click="save(item2.path)"
+              @click="save('/'+item2.path)"
             >
               <template slot="title">
                 <i class="el-icon-menu"></i>
