@@ -13,8 +13,7 @@
             <el-row
               v-for="(item,i1) in props.row.children"
               :key="item.id"
-              :class="['bdbottom', i1 === 0 ? 'bdtop' : '', 'vcenter']"
-            >
+              :class="['bdbottom', i1 === 0 ? 'bdtop' : '', 'vcenter']">
               <el-col :span="5">
                 <el-tag closable @close="handleClose(props.row,item.id)">{{item.authName}}</el-tag>
                 <!--箭头-->
@@ -24,14 +23,12 @@
                 <el-row
                   v-for="(item1,i2) in item.children"
                   :key="item1.id"
-                  :class="[i2 === 0 ? '' : 'bdtop', 'vcenter']"
-                >
+                  :class="[i2 === 0 ? '' : 'bdtop', 'vcenter']">
                   <el-col :span="6">
                     <el-tag
                       type="success"
                       closable
-                      @close="handleClose(props.row,item1.id)"
-                    >{{item1.authName}}
+                      @close="handleClose(props.row,item1.id)">{{item1.authName}}
                     </el-tag>
                     <i class="el-icon-caret-right"></i>
                   </el-col>
@@ -42,8 +39,7 @@
                       :key="item2.id"
                       type="warning"
                       closable
-                      @close="handleClose(props.row,item2.id)"
-                    >{{item2.authName}}
+                      @close="handleClose(props.row,item2.id)">{{item2.authName}}
                     </el-tag>
                   </el-col>
                 </el-row>

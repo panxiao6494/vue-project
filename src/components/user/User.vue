@@ -262,7 +262,6 @@
           this.$message.success('添加用户成功')
           this.addDialogVisible = false
           this.queryUsers()
-
         })
       },
       async showEdit (id) {
@@ -312,19 +311,16 @@
       async savaInfo () {
         if (!this.selectedRoleId) return this.$message.error('请选择角色！') // 没有选择角色就户提示
         const { data: res } = await saveI(this.userInfo.id, this.selectedRoleId)
+        if (res.meta.status !== 200) return this.$message.error('分配失败')
         this.queryUsers()
         this.setRoleDialogVisible = false
-
       }
     },
     created () {
       this.queryUsers()
     }
-    ,
   }
-
 </script>
-
 <style lang="less" scoped="">
   .el-breadcrumb {
     font-size: 10px !important;
@@ -339,9 +335,9 @@
   .el-table {
     margin-top: 15px;
 
-  .el-button {
-    width: 46px;
-  }
+    .el-button {
+      width: 46px;
+    }
 
   }
 </style>

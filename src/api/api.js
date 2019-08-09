@@ -121,15 +121,6 @@ export function delp (param1, param2) {
   return axios.delete(`categories/${param1}/attributes/${param2}`)
 }
 
-//删除标签
-export function delT (param1, param2,) {
-  return axios.put(`categories/${param1}/attributes/${param2.attr_id}`, {
-    attr_name: param2.attr_name,
-    attr_sel: param2.attr_sel,
-    attr_vals: param2.attr_vals.join(' ')
-  })
-}
-
 export function getPar2 (params1, params2, params3) {
   return axios.post(`categories/${params1}/attributes`, {
     attr_name: params2,
@@ -152,6 +143,27 @@ export function getEt (param1, param2) {
     attr_sel: param2.attr_sel,
     attr_vals: param2.attr_vals.join(' ')
   })
+}
+
+//添加商品
+export function addGo (param) {
+  return axios.post(`goods`, param)
+}
+
+//查询订单
+export function getOr (params) {
+  return axios.get(`orders`, {
+    params: params
+  })
+}
+//查看物流信息
+export function queryL (param) {
+  return axios.get(`/kuaidi/${param}`)
+}
+
+//获取折线图
+export function getEchart () {
+  return axios.get(`reports/type/1`)
 }
 
 

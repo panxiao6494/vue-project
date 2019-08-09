@@ -60,7 +60,13 @@
               <el-button size="small" type="primary">点击上传</el-button>
             </el-upload>
           </el-tab-pane>
-          <el-tab-pane label="商品内容" name="4">定时任务补偿</el-tab-pane>
+          <el-tab-pane label="商品内容" name="4">
+            <quill-editor v-model="addForm.goods_introduce" ref="myQuillEditor" class="add">
+            </quill-editor>
+            <el-button type="primary" @click="addGoods">
+              添加商品
+            </el-button>
+          </el-tab-pane>
         </el-tabs>
       </el-form>
       <el-dialog title="图片预览" :visible.sync="previewVisible" width="50%">
@@ -71,7 +77,13 @@
 </template>
 
 <script>
-  import { getC, getPar } from '../../api/api'
+  import { getC, getPar, addGo } from '../../api/api'
+  import 'quill/dist/quill.core.css'
+  import 'quill/dist/quill.snow.css'
+  import 'quill/dist/quill.bubble.css'
+
+  import { quillEditor } from 'vue-quill-editor'
+  import _ from 'lodash'
 
   export default {
     data () {
@@ -112,6 +124,9 @@
         previewPath: '',
         previewVisible: false
       }
+    },
+    components: {
+      quillEditor
     },
     methods: {
       async getCate () {
@@ -173,6 +188,33 @@
         console.log(res)
         const picInfo = { pic: res.data.tmp_path }
         this.addForm.pics.push(picInfo)
+      },
+      addGoods () {
+        this.$refs.addFormRef.validate(async valid => {
+          if (!valid) return this.$message.error('请填写完整信息你！')
+          const form = _.cloneDeep(this.addForm) // 为了不影响addForm的数据，需要对addForm进行深拷贝，通过操作form
+          form.goods_cat = form.goods_cat.join(',') // 将数组转换成字符串
+          this.manyData.forEach(item => {
+            const newInfo = {
+              attr_id: item.attr_id,
+              attr_value: item.attr_vals.join(',')
+            }
+            this.addForm.attrs.push(newInfo)
+          })
+          this.onlyData.forEach(item => {
+            const newInfo = {
+              attr_id: item.attr_id,
+              attr_value: item.attr_vals
+            }
+            this.addForm.attrs.push(newInfo)
+          })
+          form.attrs = this.addForm.attrs
+          console.log(form)
+          const { data: res } = await addGo(form)
+          if (res.meta.status !== 201) return this.$message.error('获取失败')
+          this.$message.success('获取成功！')
+          this.$router.push('/goods')
+        })
       }
     },
     computed: {
@@ -190,5 +232,9 @@
 <style lang="less">
   .pre-img {
     width: 100%;
+  }
+
+  .add {
+    margin-bottom: 20px;
   }
 </style>
